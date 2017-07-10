@@ -1,0 +1,11 @@
+<ion-view view-title="Arquivos">
+  <ion-content>
+    <h1>Arquivos</h1>
+    <ion-list>
+      <ion-item ng-repeat="arquivo in arquivos" href="#/app/detalhe-arquivo/{{arquivo.id}}">
+        <h2>{{arquivo.nome}}</h2>
+        <p>{{arquivo.tipo}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+ion-content{
+  display: inline-block;
+}
+
+.is-file {
+  margin-top: 50px;
+}
+
+.is-header-search .card {
+  z-index: 1000;
+}
+
+.is-file p{
+  text-align: center;
+  padding: 6% 0;
+}
+
+.button-share-galeria{
+  text-align:right;
+  font-size: 20px;
+}
+
+.button-star-galeria{
+  font-size: 20px;
+}
+
+.buttoh-star-galeria:hover{
+    color: yellow;
+}
+
+.item-galeria{
+  padding: 0;
+}

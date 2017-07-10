@@ -1,0 +1,10 @@
+<ion-view view-title="Grupos">
+  <ion-content>
+    <h1>Grupos</h1>
+    <ion-list>
+      <ion-item ng-repeat="grupo in grupos" href="#/app/arquivos/{{grupo.id}}">
+        <h2>{{grupo.nome}}</h2>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
