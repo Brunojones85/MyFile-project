@@ -1,9 +1,11 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var expressMongoDb = require('express-mongo-db');
+var express        = require('express'),
+    bodyParser     = require('body-parser'),
+    expressMongoDb = require('express-mongo-db'),
+    basicAuth      = require('basic-auth');
 
-//var racaController = require('./controllers/raca.js');
-//var pokemonController = require('./controllers/pokemon.js');
+var grupoController   = require('./controllers/grupo.js'),
+    usuarioController = require('./controllers/usuario.js'),
+    arquivoController = require('./controllers/arquivo.js');
 
 // inicializa o express
 var app = express();
@@ -26,7 +28,43 @@ app.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
 
+
+//Config do basic-auth
+var auth = function (req, res, next) {
+  function unauthorized(res) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.sendStatus(401);
+  };
+
+  // traduz o cabecalho Authorization para o objeto user
+  var user = basicAuth(req);
+
+  if (!user || !user.name || !user.pass) {
+    return unauthorized(res);
+  };
+
+  req.db.collection('usuarios').findOne({usuario: user.name, senha: user.pass}, function(err, result) {
+    if (err) {
+      return unauthorized(res);
+    }
+
+    if (!result) {
+      return unauthorized(res);
+    }
+
+    next();
+  });
+
+
+
+
 // Endpoints
-//app.get('/raca', racaController.listar);
-//app.get('/pokemon', pokemonController.listar);
-//app.post('/pokemon', pokemonController.criar);
+app.get('/grupo', grupoController.listar);
+app.post('/grupo', grupoController.criar);
+
+app.get('/usuario', usuarioController.listar);
+app.post('/usuario', usuarioController.criar);
+
+app.get('/arquivo', arquivoController.listar);
+app.post('/arquivo', arquivoController.criar);
+app.delete('/arquivo/:id', arquivoController.apagar);

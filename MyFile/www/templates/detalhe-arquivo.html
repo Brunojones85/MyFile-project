@@ -1,7 +1,24 @@
-<ion-view view-title="{{arquivo.nome}}">
-  <ion-content class="">
-    <p>nome: {{arquivo.nome}}</p>
-    <p>descricao: {{arquivo.descricao}}</p>
-    <p>tamanho: {{arquivo.tamanho}}</p>
+<ion-view view-title="Detalhe Arquivo">
+  <ion-content class="is-header">
+    <div class="list card">
+
+	 <div class="item item-avatar">
+	    <img src="img/usuario.png">
+	    <h2>{{arquivo.nome}}</h2>
+	    <p>November 05, 1955</p>
+	 </div>
+
+	 <div class="item item-body">
+	    <img class="full-image" src="img/pdf.png">
+	    <p>
+	      {{arquivo.descricao}}
+	    </p>
+	    <p>
+	      <a href="#" class="subdued">1 Like</a>
+	      <a href="#" class="subdued">5 Comments</a>
+	    </p>
+	 </div>
+
+</div>	
   </ion-content>
 </ion-view>

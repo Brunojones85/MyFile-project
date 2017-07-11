@@ -1,8 +1,8 @@
 var ObjectID = require('mongodb').ObjectID;
 
-//lista os usuarios
+//lista os grupos
 exports.listar = function (req, res) {
-    req.db.collection('usuarios').find().toArray(function(err, result) {
+    req.db.collection('grupos').find().toArray(function(err, result) {
         if (err) {
             return console.log(err)
         };
@@ -11,22 +11,14 @@ exports.listar = function (req, res) {
     });
 };
 
-//cria usuario
+//cria grupo
 exports.criar = function (req, res){
-	var dadosUsuario = req.body;
+	var dadosGrupos = req.body;
 
-	        req.db.collection('usuarios').save(dadosUsuario, function(err, result) {
+	        req.db.collection('grupos').save(dadosGrupos, function(err, result) {
             if (err) {
                 return res.sendStatus(503);
             }
             res.sendStatus(201);
         });
 }
-
-
-
-
-
-
-
-
