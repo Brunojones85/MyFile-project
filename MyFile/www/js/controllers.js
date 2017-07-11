@@ -23,12 +23,16 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('GruposController', function($scope, ServiceGrupos, $stateParams) {
-    $scope.grupos = ServiceGrupos.grupos_todos();
+.controller('GruposController', function($scope, $http) {
+    $http.get('http://localhost:3000/grupo').then(function(reposta){
+    $scope.grupos = reposta.data;
+  });
 })
 
-.controller('ArquivosController', function($scope, ServiceArquivos,) {
-    $scope.arquivos = ServiceArquivos.arquivos_todos();
+.controller('ArquivosController', function($scope, $http,) {
+    $http.get('http://localhost:3000/arquivo').then(function(reposta){
+    $scope.arquivos = reposta.data;
+  });
 })
 
 .controller('DetalheArquivoController', function($scope, $stateParams, ServiceArquivos) {

@@ -3,7 +3,7 @@ var express        = require('express'),
     expressMongoDb = require('express-mongo-db'),
     basicAuth      = require('basic-auth');
 
-var grupoController   = require('./controllers/grupo.js'),
+var grupoController   = require('./controllers/grupos.js'),
     usuarioController = require('./controllers/usuario.js'),
     arquivoController = require('./controllers/arquivo.js');
 
@@ -53,10 +53,10 @@ var auth = function (req, res, next) {
     }
 
     next();
-  })
-};
+  });
+}
 
-/*
+
 // Endpoints
 app.get('/grupo', grupoController.listar);
 app.post('/grupo', grupoController.criar);
@@ -67,4 +67,3 @@ app.post('/usuario', usuarioController.criar);
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);
 app.delete('/arquivo/:id', arquivoController.apagar);
-*/

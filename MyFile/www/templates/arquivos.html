@@ -9,14 +9,16 @@
  </ion-content>
   <ion-content class="is-file">
     <div class="list list-inset">
-      <div class="card">
+      <div class="card" ng-repeat="arquivo in arquivos">
         <div class="item-galeria item item-text-wrap">
             <div class="row">
                 <div class="col button-star-galeria">
                   <button class="button-star-galeria ion-ios-star-outline"></button>
                 </div>
                 <div class="col">
-                  <p> Arquivo 1</p>
+                  <p>{{arquivo.nome}}</p>
+                  <p>{{arquivo.extensao}}</p>
+                  <p>{{arquivo["data-criacao"]}}</p>
                 </div>
                 <div class="col button-share-galeria">
                   <button class="button-share-galeria ion-android-share-alt"></button>
