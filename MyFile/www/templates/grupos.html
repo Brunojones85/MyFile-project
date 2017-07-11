@@ -1,4 +1,4 @@
-<ion-view view-title="Grupos">
+<ion-view view-title="Grupo">
   <ion-content class="is-header">
     <div class="card">
       <label class="item item-input">
@@ -6,15 +6,13 @@
         <input type="text" placeholder="Search">
       </label>
     </div>
-  </ion-content>
+ </ion-content>
   <ion-content class="has-search">
     <div class="list list-inset">
       <div class="list">
         <a class="item item-thumbnail-left" href="#">
           <img src="img/grupo.png">
-          <ion-item ng-repeat="grupo in grupos" href="#/app/arquivos/{{grupo.id}}">
-        	<h2>{{grupo.nome}}</h2>
-      	  </ion-item>
+          <h2>Nome do Grupo</h2>
           <p>Número de Mensagens</p>
         </a>
       </div>
