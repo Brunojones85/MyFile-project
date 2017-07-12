@@ -1,8 +1,23 @@
 .texto-conta{
   text-align: center;
+  margin-top: 40px;
+  color: white;
 }
 
 .texto-rodape{
   text-align: center;
-  border-top: 10px;
+  color: white;
+  padding-top: 30vh;
+}
+
+.pagina-login{
+  background-image: url('../img/fundo4.png');
+}
+
+.list{
+  background: rgba(0, 0, 0, 0);
+}
+
+.bar{
+  opacity: 0.4;
 }
