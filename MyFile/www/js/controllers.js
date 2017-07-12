@@ -1,6 +1,5 @@
 angular.module('starter.controllers', [])
 
-
 .controller('LoginController', function($scope, $state) {
 
   $scope.login = function () {
@@ -47,7 +46,6 @@ angular.module('starter.controllers', [])
         xhr.send(formData);
       }
   })
-
 
 .controller('ArquivosController', function($scope, $http,) {
     $http.get('http://localhost:3000/arquivo').then(function(reposta){
