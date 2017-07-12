@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
 
 .controller('CadastroController', function($scope, $state) {
     $scope.salvar = function () {
-        $state.go('login')
+        $state.go('grupoMais')
     }
 })
 
