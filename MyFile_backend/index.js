@@ -1,11 +1,13 @@
 var express        = require('express'),
     bodyParser     = require('body-parser'),
     expressMongoDb = require('express-mongo-db'),
-    basicAuth      = require('basic-auth');
+    basicAuth      = require('basic-auth'),
+    multiparty     = require('connect-multiparty');
 
-var grupoController   = require('./controllers/grupo.js'),
+var grupoController   = require('./controllers/grupos.js'),
     usuarioController = require('./controllers/usuario.js'),
     arquivoController = require('./controllers/arquivo.js');
+
 
 // inicializa o express
 var app = express();
@@ -54,8 +56,7 @@ var auth = function (req, res, next) {
 
     next();
   });
-
-
+}
 
 
 // Endpoints
@@ -68,3 +69,6 @@ app.post('/usuario', usuarioController.criar);
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);
 app.delete('/arquivo/:id', arquivoController.apagar);
+
+app.route('/upload')
+    .post(multiparty(), require('./controllers/upload.js'));

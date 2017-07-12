@@ -3,11 +3,11 @@ ion-content{
 }
 
 .is-file {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .is-header-search .card {
-  z-index: 1000;
+  z-index: 999;
 }
 
 .is-file p{
@@ -21,11 +21,8 @@ ion-content{
 }
 
 .button-star-galeria{
+  text-align: left;
   font-size: 20px;
-}
-
-.buttoh-star-galeria:hover{
-    color: yellow;
 }
 
 .item-galeria{

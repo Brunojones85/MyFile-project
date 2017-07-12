@@ -1,32 +1,31 @@
 <ion-view view-title="Arquivos">
-  <ion-content>
-
-    <div class="list list-inset">
-
-      <ul class="list">
-          <li class="item">
-              Arquivo 1
-          </li>
-      </ul>
-
-      <ul class="list">
-          <li class="item">
-              Arquivo 2
-          </li>
-      </ul>
-
-      <ul class="list">
-          <li class="item">
-              Arquivo 3
-          </li>
-      </ul>
-
-      <ul class="list">
-          <li class="item">
-              Arquivo N
-          </li>
-      </ul>
-
+  <ion-content class="is-header-search">
+    <div class="card">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search">
+      </label>
     </div>
-
+ </ion-content>
+  <ion-content class="is-file">
+    <div class="list list-inset">
+      <div class="card" ng-repeat="arquivo in arquivos">
+        <div class="item-galeria item item-text-wrap">
+            <div class="row">
+                <div class="col button-star-galeria">
+                  <button class="button-star-galeria ion-ios-star-outline"></button>
+                </div>
+                <div class="col">
+                  <p>{{arquivo.nome}}</p>
+                  <p>{{arquivo.extensao}}</p>
+                  <p>{{arquivo["data-criacao"]}}</p>
+                </div>
+                <div class="col button-share-galeria">
+                  <button class="button-share-galeria ion-android-share-alt"></button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>

@@ -37,71 +37,82 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       controller: 'CadastroController'
     })
 
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppController'
-  })
-
-  .state('app.grupos', {
-    url: '/grupos',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/grupos.html',
-        controller:  'GruposController'
-      }
-    }
-  })
-
-  .state('app.arquivos', {
-    url: '/arquivos/:id',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/arquivos.html',
-        controller:  'ArquivosController'
-      }
-    }
-  })
-
-  .state('app.grupoMais', {
-      url: '/grupoMais',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/grupoMais.html',
-          controller:  'GrupoMaisController'
-        }
-      }
+        .state('upload', {
+      url: '/upload',
+      templateUrl: 'templates/upload.html',
+      controller: 'UploadController'
     })
-    .state('app.galeria', {
-      url: '/galeria',
+
+    .state('app', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppController'
+    })
+
+    .state('app.grupos', {
+      url: '/grupos',
       views: {
         'menuContent': {
-          templateUrl: 'templates/galeria.html',
-          controller: 'GaleriaController'
+          templateUrl: 'templates/grupos.html',
+          controller:  'GruposController'
         }
       }
     })
 
-    .state('app.detalhe-arquivo', {
-      url: '/detalhe-arquivo/:id',
+    .state('app.arquivos', {
+      url: '/arquivos/:id',
       views: {
         'menuContent': {
-          templateUrl: 'templates/detalhe-arquivo.html',
-          controller: 'DetalheArquivoController'
+          templateUrl: 'templates/arquivos.html',
+          controller:  'ArquivosController'
         }
       }
     })
 
-    .state('app.perfil', {
-      url: '/perfil',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/perfil.html',
-          controller: 'PerfilController'
+    .state('app.grupoMais', {
+        url: '/grupoMais',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/grupoMais.html',
+            controller:  'GrupoMaisController'
+          }
         }
-      }
-    });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
-});
+      })
+      .state('app.galeria', {
+        url: '/galeria',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/galeria.html',
+            controller: 'GaleriaController'
+          }
+        }
+      })
+
+      .state('app.detalhe-arquivo', {
+        url: '/detalhe-arquivo/:id',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/detalhe-arquivo.html',
+            controller: 'DetalheArquivoController'
+          }
+        }
+      })
+
+      .state('app.perfil', {
+        url: '/perfil',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/perfil.html',
+            controller: 'PerfilController'
+          }
+        }
+      });
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/login');
+  });
+
+
+
+
+
