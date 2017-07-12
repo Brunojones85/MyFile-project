@@ -60,8 +60,59 @@ angular.module('starter.controllers', [])
 .controller('PerfilController', function($scope) {
 })
 
-.controller('GrupoMaisController', function($scope) {
+.controller('GrupoMaisController', function($scope, $ionicPopup) {
+  $scope.showPopup = function() {
+      $scope.data = {}
+       var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: 'Crie seu grupo!',
+         scope: $scope,
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Criar</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                     if (!$scope.data.model) {
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
+     $scope.showPopupTwo = function() {
+      $scope.data = {}
+       var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: 'Digite o nome do grupo',
+         scope: $scope,
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Criar</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                     if (!$scope.data.model) {
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
 })
+
 
 .controller('GaleriaController', function($scope) {
   $scope.galerias = [
