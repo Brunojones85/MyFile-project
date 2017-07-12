@@ -14,15 +14,11 @@ module.exports = function(req, res){
 	 		if(err){
 	 			res.status(500).json({error: err});
 	 		}
-
 	        req.db.collection('arquivos').save({"nome": nomeArquivo}, function(err, result) {
             if (err) {
                  return res.sendStatus(503).json({error: err});
             }
             res.json({message: "enviado com sucesso." + req.files.file.name, file: novo});
         });
-	 		 
-	 		
-	 	})
-
-	}
+ 	})
+}
