@@ -1,5 +1,7 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
 2 info using npm@3.10.10
 3 info using node@v6.11.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -7,25 +9,25 @@
 6 silly lifecycle myfile@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle myfile@1.0.0~start: myfile@1.0.0
 8 verbose lifecycle myfile@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle myfile@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/paulofelipeoliveirasouza/Documents/Meus_Arquivos/curso_MasterTech/myfile2/MyFile_backend/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-10 verbose lifecycle myfile@1.0.0~start: CWD: /Users/paulofelipeoliveirasouza/Documents/Meus_Arquivos/curso_MasterTech/myfile2/MyFile_backend
-11 silly lifecycle myfile@1.0.0~start: Args: [ '-c', 'node index.js' ]
+9 verbose lifecycle myfile@1.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\jvito\Desktop\Mastertech\projetos\week3\projeto2\MyFile_backend\node_modules\.bin;C:\cmder\bin;C:\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\cmder\vendor\conemu-maximus5;C:\cmder\vendor\conemu-maximus5\ConEmu;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\Git\cmd;C:\Android;C:\Windows\System32;C:\Program Files (x86)\Brackets\command;C:\Users\jvito\AppData\Local\Microsoft\WindowsApps;C:\Users\jvito\AppData\Roaming\npm;C:\ProgramData\jvito\atom\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\cmder\
+10 verbose lifecycle myfile@1.0.0~start: CWD: C:\Users\jvito\Desktop\Mastertech\projetos\week3\projeto2\MyFile_backend
+11 silly lifecycle myfile@1.0.0~start: Args: [ '/d /s /c', 'node index.js' ]
 12 silly lifecycle myfile@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle myfile@1.0.0~start: Failed to exec start script
 14 verbose stack Error: myfile@1.0.0 start: `node index.js`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:255:16)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at EventEmitter.emit (events.js:191:7)
-14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
 14 verbose stack     at maybeClose (internal/child_process.js:891:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid myfile@1.0.0
-16 verbose cwd /Users/paulofelipeoliveirasouza/Documents/Meus_Arquivos/curso_MasterTech/myfile2/MyFile_backend
-17 error Darwin 16.6.0
-18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+16 verbose cwd C:\Users\jvito\Desktop\Mastertech\projetos\week3\projeto2\MyFile_backend
+17 error Windows_NT 10.0.15063
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 19 error node v6.11.0
 20 error npm  v3.10.10
 21 error code ELIFECYCLE
