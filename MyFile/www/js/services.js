@@ -61,4 +61,4 @@ angular.module('starter.services', [])
       }
     };
 
-  });
+  })

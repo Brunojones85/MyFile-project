@@ -72,3 +72,6 @@ app.delete('/arquivo/:id', arquivoController.apagar);
 
 app.route('/upload')
     .post(multiparty(), require('./controllers/upload.js'));
+
+app.get('/contar', arquivoController.contar);
+app.get('/contargrupo', grupoController.contargrupo);

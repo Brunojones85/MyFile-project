@@ -1,6 +1,5 @@
 angular.module('starter.controllers', [])
-
-.controller('LoginController', function($scope, $state) {
+  .controller('LoginController', function($scope, $state) {
 
   $scope.login = function () {
         $state.go('app.arquivos')
@@ -23,7 +22,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('GruposController', function($scope, $http) {
-    $http.get('http://localhost:3000/grupo').then(function(reposta){
+  $http.get('http://localhost:3000/grupo').then(function(reposta){
     $scope.grupos = reposta.data;
   });
 })
@@ -47,17 +46,25 @@ angular.module('starter.controllers', [])
       }
   })
 
-.controller('ArquivosController', function($scope, $http,) {
+.controller('ArquivosController', function($scope, $http) {
     $http.get('http://localhost:3000/arquivo').then(function(reposta){
     $scope.arquivos = reposta.data;
-  });
+     });
 })
 
 .controller('DetalheArquivoController', function($scope, $stateParams, ServiceArquivos) {
     $scope.arquivo = ServiceArquivos.get($stateParams.id);
 })
 
-.controller('PerfilController', function($scope) {
+.controller('PerfilController', function($scope, $http) {
+   $http.get('http://localhost:3000/contar').then(function(reposta){
+   $scope.countArquivos = reposta.data.contagem;
+  });
+
+  $http.get('http://localhost:3000/contargrupo').then(function(reposta){
+  $scope.countGrupos = reposta.data.contagem;
+  });
+
 })
 
 .controller('GrupoMaisController', function($scope, $ionicPopup) {
@@ -112,7 +119,6 @@ angular.module('starter.controllers', [])
    };
 
 })
-
 
 .controller('GaleriaController', function($scope) {
   $scope.galerias = [
