@@ -41,11 +41,11 @@ var auth = function (req, res, next) {
   // traduz o cabecalho Authorization para o objeto user
   var user = basicAuth(req);
 
-  if (!user || !user.name || !user.pass) {
+  if (user.nome && user.senha) {
     return unauthorized(res);
   };
 
-  req.db.collection('usuarios').findOne({usuario: user.name, senha: user.pass}, function(err, result) {
+  req.db.collection('usuarios').findOne({usuario: user.email, senha: user.senha}, function(err, result) {
     if (err) {
       return unauthorized(res);
     }
@@ -60,11 +60,12 @@ var auth = function (req, res, next) {
 
 
 // Endpoints
-app.get('/grupo', grupoController.listar);
+app.get('/grupo',grupoController.listar);
 app.post('/grupo', grupoController.criar);
 
 app.get('/usuario', usuarioController.listar);
 app.post('/usuario', usuarioController.criar);
+app.get('/usuario/:id', auth, usuarioController.recuperar);
 
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);

@@ -7,19 +7,19 @@
       <div class="list cadastro">
         <label class="item item-input item-floating-label">
           <span class="input-label">Full Name</span>
-          <input type="text" placeholder="Full Name">
+          <input type="text" placeholder="Full Name" ng-model="dados.nome">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Email</span>
-          <input type="text" placeholder="Email">
+          <input type="text" placeholder="Email" ng-model="dados.email">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Senha</span>
-          <input type="password" placeholder="Senha">
+          <input type="password" placeholder="Senha" ng-model="dados.senha">
         </label>
         <ion-list>
-          <ion-radio ng-model="choice" ng-value="'A'">Estudante</ion-radio>
-          <ion-radio ng-model="choice" ng-value="'B'">Profissional</ion-radio>
+          <ion-radio ng-model="dados.escolha" ng-value="'Profissional'">Profissional</ion-radio>
+          <ion-radio ng-model="dados.escolha" ng-value="'Aluno'">Alunos</ion-radio>
         </ion-list>
         <button class="button button-block button-balanced" ng-click="salvar()" type="submit">Salvar</utton>
         </div>

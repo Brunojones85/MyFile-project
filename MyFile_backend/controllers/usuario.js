@@ -15,18 +15,27 @@ exports.listar = function (req, res) {
 exports.criar = function (req, res){
 	var dadosUsuario = req.body;
 
-	        req.db.collection('usuarios').save(dadosUsuario, function(err, result) {
-            if (err) {
-                return res.sendStatus(503);
-            }
-            res.sendStatus(201);
+	  req.db.collection('usuarios').save(dadosUsuario, function(err, result) {
+      if (err) {
+        return res.sendStatus(503);
+        }
+        res.sendStatus(201);
         });
 }
 
+exports.recuperar = function (req, res) {
+  var id = req.params.id;
+  var user = req.params.usuario
 
+  req.db.collection('usuarios').findOne(usuario: user.nome}, function(err, result) {
+    if (err) {
+      return res.sendStatus(503);
+    }
 
+    if (!result) {
+      return res.send(404);
+    }
 
-
-
-
-
+      res.send(result);
+  });
+};

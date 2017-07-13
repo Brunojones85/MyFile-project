@@ -1,9 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('LoginController', function($scope, $state) {
+.controller('LoginController', function($scope, $state, $http) {
+  $scope.dados = {};
 
   $scope.login = function () {
-        $state.go('app.arquivos')
+    $http.get('http://localhost:3000/usuario', $scope.dados).then(function(resposta) {
+      $scope.usuarios = resposta.dados;
+    })
+        $state.go('app.grupos')
   }
 
   $scope.cadastro = function () {
@@ -12,8 +16,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('CadastroController', function($scope, $state) {
+.controller('CadastroController', function($scope, $state, $http) {
+    $scope.dados = {};
+
     $scope.salvar = function () {
+      $http.post('http://localhost:3000/usuario', $scope.dados).then(function(reposta){
+      $scope.usuarios = reposta.data;
+      });
         $state.go('login')
     }
 })
@@ -29,7 +38,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('UploadController', function($scope, $http) {
-   
+
     $scope.enviar = function(){
       var formData = new FormData();
       var arquivo = document.getElementById("arquivoInput").files[0];
@@ -83,7 +92,7 @@ angular.module('starter.controllers', [])
       });
       myPopup.then(function(res) {
          console.log('Tapped!', res);
-      });    
+      });
    };
 
      $scope.showPopupTwo = function() {
@@ -108,7 +117,7 @@ angular.module('starter.controllers', [])
       });
       myPopup.then(function(res) {
          console.log('Tapped!', res);
-      });    
+      });
    };
 
 })
