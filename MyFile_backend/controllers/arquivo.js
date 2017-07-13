@@ -46,3 +46,16 @@ exports.recuperar = function (req, res) {
         res.send(result);
   });
 };
+
+//conta arquivos
+exports.contar = function (req, res) {
+  req.db.collection('arquivos').count({}, function(err, result){
+    if (err) {
+      res.sendStatus(503);
+    }
+ 
+    res.send({contagem: result});
+  }); 
+}
+
+

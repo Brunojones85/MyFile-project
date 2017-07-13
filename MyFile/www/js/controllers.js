@@ -1,6 +1,5 @@
 angular.module('starter.controllers', [])
-
-.controller('LoginController', function($scope, $state) {
+  .controller('LoginController', function($scope, $state) {
 
   $scope.login = function () {
     $state.go('app.arquivos')
@@ -16,6 +15,7 @@ angular.module('starter.controllers', [])
   $scope.salvar = function () {
     $state.go('login')
   }
+
 })
 
 .controller('AppController', function($scope, $ionicModal, $timeout) {
@@ -57,6 +57,7 @@ angular.module('starter.controllers', [])
       console.log($scope.arquivos);
     });
   }
+
 })
 
 //busca grupos
@@ -76,11 +77,71 @@ angular.module('starter.controllers', [])
   $scope.arquivo = ServiceArquivos.get($stateParams.id);
 })
 
-.controller('PerfilController', function($scope) {
+.controller('PerfilController', function($scope, $http, $ionicPopup) {
+   $http.get('http://localhost:3000/contar').then(function(reposta){
+   $scope.countArquivos = reposta.data.contagem;
+   });
+
+   $http.get('http://localhost:3000/contargrupo').then(function(reposta){
+   $scope.countGrupos = reposta.data.contagem;
+  });
+
+       $scope.showPopup = function() {
+      $scope.data = {}
+       var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: 'Crie seu grupo!',
+         scope: $scope,
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Criar</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                     if (!$scope.data.model) {
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });
+   };
+
+     $scope.showPopupTwo = function() {
+      $scope.data = {}
+       var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: 'Digite o nome do grupo',
+         scope: $scope,
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Buscar</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                     if (!$scope.data.model) {
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });
+   };
+
 })
 
-.controller('GrupoMaisController', function($scope) {
-})
+// .controller('GrupoMaisController', function($scope) {
+
+
+// })
 
 .controller('GaleriaController', function($scope) {
   $scope.galerias = [

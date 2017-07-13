@@ -79,3 +79,6 @@ app.get('/arquivos/:nome', arquivoController.recuperar);
 
 // Endpoint busca grupos (Bruno)
 app.get('/grupos/:nome', grupoController.recuperar);
+
+app.get('/contar', arquivoController.contar);
+app.get('/contargrupo', grupoController.contargrupo);
