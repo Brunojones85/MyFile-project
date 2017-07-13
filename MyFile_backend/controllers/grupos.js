@@ -34,3 +34,14 @@ exports.apagar = function (req, res) {
     res.sendStatus(200);
   });
 };
+
+
+// recupera um grupo utilizando o id (busca de grupos)
+exports.recuperar = function (req, res) {
+  req.db.collection('grupos').find({"nome": req.params.nome}).toArray(function(err, result) {
+        if (err) {
+          return console.log(err)
+        };
+        res.send(result);
+  });
+};

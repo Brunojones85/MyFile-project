@@ -2,12 +2,16 @@
   text-align: center;
   margin-top: 40px;
   color: white;
+  font-size: 20px;
+  font-family: "News Cycle", sans-serif;
 }
 
 .texto-rodape{
   text-align: center;
   color: white;
-  padding-top: 30vh;
+  padding-top: 27vh;
+  font-size: 14px;
+  font-family: "News Cycle", sans-serif;
 }
 
 .pagina-login{
@@ -20,4 +24,9 @@
 
 .bar{
   opacity: 0.4;
+}
+
+.button.button-block.button-balanced {
+  width: 100%;
+  align-items: center;
 }

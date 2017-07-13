@@ -3,29 +3,30 @@
     <div class="card">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" ng-model="dados.buscaArquivo">
       </label>
     </div>
- </ion-content>
+  </ion-content>
   <ion-content class="is-file">
     <div class="list list-inset">
       <div class="card" ng-repeat="arquivo in arquivos">
         <div class="item-galeria item item-text-wrap">
-            <div class="row">
-                <div class="col button-star-galeria">
-                  <button class="button-star-galeria ion-ios-star-outline"></button>
-                </div>
-                <div class="col">
-                  <p>{{arquivo.nome}}</p>
-                  <p>{{arquivo.extensao}}</p>
-                  <p>{{arquivo["data-criacao"]}}</p>
-                </div>
-                <div class="col button-share-galeria">
-                  <button class="button-share-galeria ion-android-share-alt"></button>
-                </div>
+          <div class="row">
+            <div class="col button-star-galeria">
+              <button class="button-star-galeria ion-ios-star-outline"></button>
             </div>
+            <div class="col">
+              <p>{{arquivo.nome}}</p>
+              <p>{{arquivo.extensao}}</p>
+              <p>{{arquivo["data-criacao"]}}</p>
+            </div>
+            <div class="col button-share-galeria">
+              <button class="button-share-galeria ion-android-share-alt"></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <button type="button" name="button" ng-click="buscarArquivo()">buscar</button>
   </ion-content>
 </ion-view>
