@@ -56,19 +56,16 @@ angular.module('starter.controllers', [])
     $scope.arquivo = ServiceArquivos.get($stateParams.id);
 })
 
-.controller('PerfilController', function($scope, $http) {
+.controller('PerfilController', function($scope, $http, $ionicPopup) {
    $http.get('http://localhost:3000/contar').then(function(reposta){
    $scope.countArquivos = reposta.data.contagem;
+   });
+
+   $http.get('http://localhost:3000/contargrupo').then(function(reposta){
+   $scope.countGrupos = reposta.data.contagem;
   });
 
-  $http.get('http://localhost:3000/contargrupo').then(function(reposta){
-  $scope.countGrupos = reposta.data.contagem;
-  });
-
-})
-
-.controller('GrupoMaisController', function($scope, $ionicPopup) {
-  $scope.showPopup = function() {
+       $scope.showPopup = function() {
       $scope.data = {}
        var myPopup = $ionicPopup.show({
          template: '<input type = "text" ng-model = "data.model">',
@@ -101,7 +98,7 @@ angular.module('starter.controllers', [])
          scope: $scope,
          buttons: [
             { text: 'Cancel' }, {
-               text: '<b>Criar</b>',
+               text: '<b>Buscar</b>',
                type: 'button-positive',
                   onTap: function(e) {
                      if (!$scope.data.model) {
@@ -119,6 +116,11 @@ angular.module('starter.controllers', [])
    };
 
 })
+
+// .controller('GrupoMaisController', function($scope) {
+  
+
+// })
 
 .controller('GaleriaController', function($scope) {
   $scope.galerias = [
