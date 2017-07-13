@@ -1,28 +1,22 @@
 <ion-view view-title="Cadastro">
-  <ion-content>
-    <div class="bar bar-header bar-light">
+  <ion-content class="pagina-cadastro">
+
       <h1 class="title">Cadastro</h1>
-    </div>
-    <div class="list list-inset has-header">
-      <div class="list cadastro">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Full Name</span>
-          <input type="text" placeholder="Full Name" ng-model="dados.nome">
+
+      <div class="list list-inset" id="cadastro-list">
+        <label class="item item-input">
+          <input type="text" placeholder="Nome completo" ng-model="dados.nome">
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Email</span>
-          <input type="text" placeholder="Email" ng-model="dados.email">
+        <label class="item item-input">
+          <input type="text" placeholder="E-mail" ng-model="dados.email">
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Senha</span>
+        <label class="item item-input">
           <input type="password" placeholder="Senha" ng-model="dados.senha">
         </label>
-        <ion-list>
+          <ion-radio ng-model="dados.escolha" ng-value="'Estudante'">Estudante</ion-radio>
           <ion-radio ng-model="dados.escolha" ng-value="'Profissional'">Profissional</ion-radio>
-          <ion-radio ng-model="dados.escolha" ng-value="'Aluno'">Alunos</ion-radio>
-        </ion-list>
-        <button class="button button-block button-balanced" ng-click="salvar()" type="submit">Salvar</utton>
-        </div>
+          <button class="button button-block button-positive" ng-click="salvar()" type="submit">Salvar</utton>
       </div>
+
     </ion-content>
   </ion-view>

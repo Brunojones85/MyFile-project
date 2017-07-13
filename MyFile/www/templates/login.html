@@ -1,32 +1,30 @@
 <ion-modal-view>
   <ion-content class="pagina-login">
+    <img class="logo" src="../img/myfilelogo-01.png">
 
-    <div class="list list-inset has-header">
-
-    <div class="list">
-     <div class="list list-inset">
+      <div class="list list-inset">
         <label class="item item-input">
           <input type="text" placeholder="E-mail" ng-model="dados.email">
         </label>
         <label class="item item-input">
           <input type="password" placeholder="Senha" ng-model="dados.senha">
         </label>
+        <button class="button button-block button-positive" ng-click="login()" type="submit">Log in</button>
+        <button class="button button-block" ng-click="cadastro()" type="submit" id="botao-cadastro">Cadastro</button>
+        <div class="row">
+            <div class="col facebook">
+              <i class="ion-social-facebook"></i>
+            </div>
+            <div class="col google">
+              <i class="ion-social-google"></i>
+            </div>
+        </div>
+        
       </div>
 
-      <label>
-        <button class="button button-block button-balanced" ng-click="login()" type="submit">Log in</button>
-      </label>
-      <label>
-        <button class="button button-block button-balanced" ng-click="cadastro()" type="submit">Cadastro</button>
-      </label>
-    </div>
-
-    <div class="texto-conta">
-      <p>Você já possui sua conta?</p>
-    </div>
 
     <div class="texto-rodape">
       <p>Copyright © 2017</p>
     </div>
- </ion-content>
+  </ion-content>
 </ion-modal-view>

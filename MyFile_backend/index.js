@@ -72,4 +72,13 @@ app.post('/arquivo', arquivoController.criar);
 app.delete('/arquivo/:id', arquivoController.apagar);
 
 app.route('/upload')
+<<<<<<< HEAD
     .post(multiparty(), require('./controllers/upload.js'));
+||||||| merged common ancestors
+    .post(multiparty(), require('./controllers/upload.js'));
+=======
+    .post(multiparty(), require('./controllers/upload.js'));
+
+app.get('/contar', arquivoController.contar);
+app.get('/contargrupo', grupoController.contargrupo);
+>>>>>>> 28d8392f9abd8131dbe15abd7b55be7b28ef4301

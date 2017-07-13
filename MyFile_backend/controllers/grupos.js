@@ -34,3 +34,15 @@ exports.apagar = function (req, res) {
     res.sendStatus(200);
   });
 };
+
+
+//conta grupos
+exports.contargrupo = function (req, res) {
+  req.db.collection('grupos').count({}, function(err, result){
+    if (err) {
+      res.sendStatus(503);
+    }
+ 
+    res.send({contagem: result});
+  }); 
+}
