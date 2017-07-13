@@ -69,8 +69,12 @@ app.post('/usuario', usuarioController.criar);
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);
 app.delete('/arquivo/:id', arquivoController.apagar);
+app.get('/listarUm/:id', arquivoController.listarUm);
 
-app.route('/upload')
+app.route('/galeria')
+    .post(multiparty(), require('./controllers/upload.js'));
+
+app.route('/arquivoFile')
     .post(multiparty(), require('./controllers/upload.js'));
 
 app.get('/contar', arquivoController.contar);

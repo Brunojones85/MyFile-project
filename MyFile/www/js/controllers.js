@@ -28,32 +28,63 @@ angular.module('starter.controllers', [])
 })
 
 .controller('UploadController', function($scope, $http) {
-   
-    $scope.enviar = function(){
+  
+  })
+
+.controller('ArquivosController', function($scope, $http, $ionicActionSheet) {
+    $http.get('http://localhost:3000/arquivo').then(function(reposta){
+    $scope.arquivos = reposta.data;
+    // console.log(reposta.data);
+     });
+
+          $scope.enviar = function(){
       var formData = new FormData();
       var arquivo = document.getElementById("arquivoInput").files[0];
       formData.append("file", arquivo);
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-          var div = document.getElementById('mensagem');
-          var resposta = xhr.responseText;
-          div.innerHTML += resposta;
-          }
-        }
-        xhr.open("POST", "http://localhost:3000/upload");
+        // if (xhr.readyState == 4) {
+        //   var span = document.getElementById('mensagem');
+        //   var resposta = xhr.responseText;
+        //   span.innerHTML += resposta;
+        //   }
+         }
+        xhr.open("POST", "http://localhost:3000/arquivoFile");
         xhr.send(formData);
       }
-  })
 
-.controller('ArquivosController', function($scope, $http) {
-    $http.get('http://localhost:3000/arquivo').then(function(reposta){
-    $scope.arquivos = reposta.data;
-     });
+      $scope.showActionsheet = function() {
+    console.log(1);
+    $ionicActionSheet.show({
+        buttons: [
+        { text: '<i class="icon ion-share"></i> Compartilhar' },
+        { text: '<i class="icon ion-star"></i> Favoritos' },
+      ],
+      destructiveText: 'Delete',
+      cancelText: 'Cancel',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        return true;
+      }
+    });
+  };
+    
+
+
+
 })
 
-.controller('DetalheArquivoController', function($scope, $stateParams, ServiceArquivos) {
-    $scope.arquivo = ServiceArquivos.get($stateParams.id);
+.controller('DetalheArquivoController', function($scope, $stateParams, $http) {
+    $http.get('http://localhost:3000/listarUm/' + $stateParams.id).then(function(reposta){
+    $scope.arquivo = reposta.data;
+  })
 })
 
 .controller('PerfilController', function($scope, $http, $ionicPopup) {
@@ -122,10 +153,27 @@ angular.module('starter.controllers', [])
 
 // })
 
-.controller('GaleriaController', function($scope) {
-  $scope.galerias = [
-    {
-      nome:''
-    }
-  ];
-});
+.controller('GaleriaController', function($scope, $http) {
+
+      $scope.enviar = function(){
+      var formData = new FormData();
+      var arquivo = document.getElementById("arquivoInput").files[0];
+      formData.append("file", arquivo);
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        // if (xhr.readyState == 4) {
+        //   var span = document.getElementById('mensagem');
+        //   var resposta = xhr.responseText;
+        //   span.innerHTML += resposta;
+        //   }
+         }
+        xhr.open("POST", "http://localhost:3000/galeria");
+        xhr.send(formData);
+      }
+
+})
+
+
+
+  
+  

@@ -1,12 +1,10 @@
 <ion-view view-title="Galeria" id="pagina-galeria">
-  <ion-content class="is-header-search">
-    <div class="card">
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search">
-      </label>
-    </div>
- </ion-content>
+  <div class="card">
+    <label class="item item-input search">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Search">
+    </label>
+  </div>
   <ion-content class="is-file">
     <div class="list list-inset">
       <div class="card" ng-repeat="arquivo in arquivos">
@@ -26,6 +24,8 @@
             </div>
         </div>
       </div>
-    </div>
+    </div>  
+    <input type="file" id="arquivoInput" />
+    <button ng-click="enviar()">Enviar </button>
   </ion-content>
 </ion-view>

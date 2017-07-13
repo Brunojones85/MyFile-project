@@ -8,17 +8,18 @@ module.exports = function(req, res){
 	  var arquivo = req.files.file;
 	  var temporario = req.files.file.path;
 	  var nomeArquivo = req.files.file.name;
-	  var tipoArquivo = req.files.file.type;
 	  var novo = './uploads/' + nomeArquivo;
+	  var extensao = req.files.file.type.split('/').pop();
+
 	 	fs.rename(temporario, novo, function(err){
 	 		if(err){
 	 			res.status(500).json({error: err});
 	 		}
-	        req.db.collection('arquivos').save({"nome": nomeArquivo}, function(err, result) {
+	        req.db.collection('arquivos').save({"nome": nomeArquivo, "estensao": extensao, "tamanho": req.files.file.size}, function(err, result) {
             if (err) {
                  return res.sendStatus(503).json({error: err});
             }
-            res.json({message: "enviado com sucesso." + req.files.file.name, file: novo});
+            console.log(req.files)
         });
  	})
 }
