@@ -1,13 +1,11 @@
-<ion-view view-title="Grupo" id="pagina-grupos">
-  <ion-content class="is-header">
+<ion-view view-title="Grupos" id="pagina-grupos">
     <div class="card">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" placeholder="Search">
       </label>
     </div>
- </ion-content>
-  <ion-content class="has-search">
+  <ion-content class="is-header"  id="topo">
     <div class="list list-inset">
       <div class="list" ng-repeat="grupo in grupos" ng-model="facebook()">
         <a class="item item-thumbnail-left" href="#">

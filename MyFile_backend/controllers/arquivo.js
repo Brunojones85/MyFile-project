@@ -11,16 +11,27 @@ exports.listar = function (req, res) {
     });
 };
 
+//lista um arquivos
+exports.listarUm = function (req, res) {
+    req.db.collection('arquivos').findOne({_id: ObjectID(req.params.id)}).then(function(result) {
+        res.send(result);
+    });
+};
+
+
 //cria arquivo
 exports.criar = function (req, res){
 	var dadosArquivo = req.body;
+  
+  console.log(req.body)
 
-	        req.db.collection('arquivos').save(dadosArquivo, function(err, result) {
-            if (err) {
-                return res.sendStatus(503);
-            }
-            res.sendStatus(201);
-        });
+  req.db.collection('arquivos').save(dadosArquivo, function(err, result) {
+    if (err) {
+        return res.sendStatus(503);
+    }
+    console.log('foi salvo')
+    res.sendStatus(200);
+  });
 }
 
 // remove um arquivo utilizando o id
