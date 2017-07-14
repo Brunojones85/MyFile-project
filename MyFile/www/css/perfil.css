@@ -58,5 +58,17 @@ p.nome {
 background: #757F9A;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+.criaprocura-grupo {
+  text-align: center;
+  margin-top: 15%;
+  font-family: 'Rambla', sans-serif;
+  color: #63747A;
+  font-size: 20px;
+}
+
+.ui.buttons.grupos {
+    margin-left: 25%;
+    margin-top: 1%;
 }

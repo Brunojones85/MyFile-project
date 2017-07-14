@@ -1,7 +1,6 @@
 var express        = require('express'),
     bodyParser     = require('body-parser'),
     expressMongoDb = require('express-mongo-db'),
-    basicAuth      = require('basic-auth'),
     multiparty     = require('connect-multiparty');
 
 var grupoController   = require('./controllers/grupos.js'),
@@ -29,56 +28,17 @@ app.use(function(req, res, next) {
 app.listen(3000, function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
-
-
-//Config do basic-auth
-var auth = function (req, res, next) {
-  function unauthorized(res) {
-    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-    return res.sendStatus(401);
-  };
-
-  // traduz o cabecalho Authorization para o objeto user
-  var user = basicAuth(req);
-
-  if (user.nome && user.senha) {
-    return unauthorized(res);
-  };
-
-  req.db.collection('usuarios').findOne({usuario: user.email, senha: user.senha}, function(err, result) {
-    if (err) {
-      return unauthorized(res);
-    }
-
-    if (!result) {
-      return unauthorized(res);
-    }
-
-    next();
-  });
-}
-
-
 // Endpoints
 app.get('/grupo',grupoController.listar);
 app.post('/grupo', grupoController.criar);
 
 app.get('/usuario', usuarioController.listar);
 app.post('/usuario', usuarioController.criar);
-app.get('/usuario/:id', auth, usuarioController.recuperar);
+app.post('/usuario/login', usuarioController.recuperar);
 
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);
 app.delete('/arquivo/:id', arquivoController.apagar);
 
 app.route('/upload')
-<<<<<<< HEAD
     .post(multiparty(), require('./controllers/upload.js'));
-||||||| merged common ancestors
-    .post(multiparty(), require('./controllers/upload.js'));
-=======
-    .post(multiparty(), require('./controllers/upload.js'));
-
-app.get('/contar', arquivoController.contar);
-app.get('/contargrupo', grupoController.contargrupo);
->>>>>>> 28d8392f9abd8131dbe15abd7b55be7b28ef4301

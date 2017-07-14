@@ -1,5 +1,5 @@
-<ion-view view-title="Perfil">
-  <ion-content class="pagina-perfil">
+<ion-view view-title="Perfil" class="pagina-perfil">
+  <ion-content>
 	  <div class="fundoPerfilUm">
 	  	<div class="row">
 	  		<div class="col col-25"><i class="ion-gear-b"></i></div>
@@ -18,5 +18,15 @@
 	    	<div class="col col-50 gruposdesc">Grupos</div>
 	       	<div class="col col-50">Arquivos</div>
 	    </div>
+
+	    <div>
+	    <p class="criaprocura-grupo">Já possui um grupo?</p>
+      	<div class="ui buttons grupos">
+		  <button class="ui button" ng-click="showPopup()">Criar</button>
+		  <div class="or"></div>
+		  <button class="ui positive button" ng-click="showPopupTwo()">Procurar</button>
+		</div>
+	    </div>
+
    </ion-content>
 </ion-view>

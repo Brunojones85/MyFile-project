@@ -4,14 +4,27 @@ angular.module('starter.controllers', [])
   $scope.dados = {};
 
   $scope.login = function () {
-    $http.get('http://localhost:3000/usuario', $scope.dados).then(function(resposta) {
-      $scope.usuarios = resposta.dados;
-    })
-        $state.go('app.grupos')
+    $http.post('http://localhost:3000/usuario/login', $scope.dados).then(function(resposta) {
+      $scope.usuario = resposta.data;
+      $state.go('app.grupos');
+
+    }, function(resposta){
+      if(resposta.status == 400){
+        return $scope.erro = "E-mail ou Senha incorreto";
+      }
+
+      if(resposta.status == 403){
+        return $scope.erro = "Dados em branco";
+      }
+
+      if(reposta.status == 503){
+        return $scope.erro = "Tente novamente mais tarde";
+      }
+    });
   }
 
   $scope.cadastro = function () {
-        $state.go('cadastro')
+    $state.go('cadastro')
   }
 
 })
@@ -21,11 +34,33 @@ angular.module('starter.controllers', [])
 
     $scope.salvar = function () {
       $http.post('http://localhost:3000/usuario', $scope.dados).then(function(reposta){
-      $scope.usuarios = reposta.data;
-      console.log($scope.dados);
-      });
-        $state.go('login')
-    }
+
+      // if(resposta.status == 201){
+        $scope.usuarios = reposta.data;
+        $state.go('app.grupos')
+      // }
+    },function(resposta){
+      if(resposta.status == 403){
+          return $scope.erro = "Dados em branco";
+      }
+
+      if(resposta.status == 503){
+        return $scope.erro = "Tente novamente mais tarde";
+      }
+
+      if(resposta.status == 402){
+        return $scope.erro = "Senha muito curta, tente pelo o menos com 8 digito";
+      }
+
+      if(resposta.status == 401){
+        return $scope.erro = "E-mail inválidos";
+      }
+
+      if(resposta.status == 400){
+        return $scope.erro = "Nome muito curto";
+      }
+    });
+  }
 })
 
 .controller('AppController', function($scope, $ionicModal, $timeout) {
@@ -67,19 +102,16 @@ angular.module('starter.controllers', [])
     $scope.arquivo = ServiceArquivos.get($stateParams.id);
 })
 
-.controller('PerfilController', function($scope, $http) {
+.controller('PerfilController', function($scope, $http, $ionicPopup) {
    $http.get('http://localhost:3000/contar').then(function(reposta){
    $scope.countArquivos = reposta.data.contagem;
+   });
+
+   $http.get('http://localhost:3000/contargrupo').then(function(reposta){
+   $scope.countGrupos = reposta.data.contagem;
   });
 
-  $http.get('http://localhost:3000/contargrupo').then(function(reposta){
-  $scope.countGrupos = reposta.data.contagem;
-  });
-
-})
-
-.controller('GrupoMaisController', function($scope, $ionicPopup) {
-  $scope.showPopup = function() {
+       $scope.showPopup = function() {
       $scope.data = {}
        var myPopup = $ionicPopup.show({
          template: '<input type = "text" ng-model = "data.model">',
@@ -112,7 +144,7 @@ angular.module('starter.controllers', [])
          scope: $scope,
          buttons: [
             { text: 'Cancel' }, {
-               text: '<b>Criar</b>',
+               text: '<b>Buscar</b>',
                type: 'button-positive',
                   onTap: function(e) {
                      if (!$scope.data.model) {

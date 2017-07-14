@@ -60,9 +60,7 @@ exports.contar = function (req, res) {
     if (err) {
       res.sendStatus(503);
     }
- 
+
     res.send({contagem: result});
-  }); 
+  });
 }
-
-

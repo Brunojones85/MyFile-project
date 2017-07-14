@@ -35,6 +35,23 @@ exports.apagar = function (req, res) {
   });
 };
 
+//recuperar osu grupos
+exports.recuperar = function (req, res) {
+  var id = req.params.id;
+
+  req.db.collection('arquivos').findOne({_id: ObjectID(id)}, function(err, result) {
+    if (err) {
+      return res.sendStatus(503);
+    }
+
+    if (!result) {
+      return res.send(404);
+    }
+
+      res.send(result);
+  });
+};
+
 
 //conta grupos
 exports.contargrupo = function (req, res) {
@@ -42,7 +59,7 @@ exports.contargrupo = function (req, res) {
     if (err) {
       res.sendStatus(503);
     }
- 
+
     res.send({contagem: result});
-  }); 
+  });
 }
