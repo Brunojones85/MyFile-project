@@ -35,11 +35,11 @@ exports.apagar = function (req, res) {
   });
 };
 
-//recuperar osu grupos
+//recuperar os grupos
 exports.recuperar = function (req, res) {
   var id = req.params.id;
 
-  req.db.collection('arquivos').findOne({_id: ObjectID(id)}, function(err, result) {
+  req.db.collection('grupos').findOne({_id: ObjectID(id)}, function(err, result) {
     if (err) {
       return res.sendStatus(503);
     }
@@ -62,4 +62,22 @@ exports.contargrupo = function (req, res) {
 
     res.send({contagem: result});
   });
+}
+
+exports.recuperarGrupoUsuario = function(req, res) {
+  var grupos = req.body
+
+  for(var i in grupos){
+    grupos[i] = ObjectID(grupos[i])
+  }
+
+  console.log(req.body);
+  req.db.collection('grupos').find({_id: { $in: grupos}}).toArray(function(err, result) {
+    if (err) {
+      return res.sendStatus(503);
+    }
+
+    console.log(result);
+    res.send(result);
+  })
 }

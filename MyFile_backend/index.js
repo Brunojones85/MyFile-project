@@ -31,10 +31,13 @@ app.listen(3000, function() {
 // Endpoints
 app.get('/grupo',grupoController.listar);
 app.post('/grupo', grupoController.criar);
+app.post('/grupoUsuario', grupoController.recuperarGrupoUsuario);
 
 app.get('/usuario', usuarioController.listar);
 app.post('/usuario', usuarioController.criar);
-app.post('/usuario/login', usuarioController.recuperar);
+app.post('/usuario/login', usuarioController.login);
+app.get('/usuario/:id', usuarioController.recuperar);
+// app.get('/usuario/grupo/:id', usuarioController.gruposRecuperar);
 
 app.get('/arquivo', arquivoController.listar);
 app.post('/arquivo', arquivoController.criar);
