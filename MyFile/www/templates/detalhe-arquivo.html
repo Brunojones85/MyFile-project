@@ -1,24 +1,33 @@
-<ion-view view-title="Detalhe Arquivo">
-  <ion-content class="is-header">
+<ion-view view-title="Detalhe Arquivo" id="pagina-detalhe-arquivo">
+  <ion-content class="is-header" id="topo">
     <div class="list card">
 
-	 <div class="item item-avatar">
-	    <img src="img/usuario.png">
-	    <h2>{{arquivo.nome}}</h2>
-	    <p>November 05, 1955</p>
-	 </div>
+     <div class="item item-avatar">
+        <img src="img/usuario.png">
+        <h2>{{arquivo.usuario}}</h2>
+        <p>{{arquivo["data-criacao"]}}</p>
+      </div>
 
-	 <div class="item item-body">
-	    <img class="full-image" src="img/pdf.png">
-	    <p>
-	      {{arquivo.descricao}}
-	    </p>
-	    <p>
-	      <a href="#" class="subdued">1 Like</a>
-	      <a href="#" class="subdued">5 Comments</a>
-	    </p>
-	 </div>
+     <div class="item item-body">
+        <img class="full-image">
+        <img class="full-image" src="../img/JPG.png" ng-if="arquivo.estensao == 'jpg'">
+        <img class="full-image" src="../img/PDF.png" ng-if="arquivo.estensao == 'pdf'">
+        <img class="full-image" src="../img/PNG.png" ng-if="arquivo.estensao == 'png'">
+        <img class="full-image" src="../img/JPEG.png" ng-if="arquivo.estensao == 'jpeg'">
+        <img class="full-image" src="../img/XML.png" ng-if="arquivo.estensao == 'xml'">
+      
+        
+        <p>
+          {{arquivo.nome}}<br>
+          {{arquivo.tamanho}}<br>
+          {{arquivo.extensao}}
+        </p>
+        <p>
+          <a href="#" class="subdued">1 Like</a>
+          <a href="#" class="subdued">5 Comments</a>
+        </p>
+      </div>
 
-</div>	
+   </div>
   </ion-content>
 </ion-view>
