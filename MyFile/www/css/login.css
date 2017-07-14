@@ -2,6 +2,8 @@
   text-align: center;
   margin-top: 40px;
   color: white;
+  font-size: 20px;
+  font-family: "News Cycle", sans-serif;
 }
 */
 .texto-rodape{
@@ -13,9 +15,9 @@
 
 .pagina-login{
 /*  background-image: url('../img/fundo4.png');*/
-background: #C9D6FF;  
-background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  
-background: linear-gradient(to right, #E2E2E2, #C9D6FF); 
+background: #C9D6FF;
+background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+background: linear-gradient(to right, #E2E2E2, #C9D6FF);
 }
 
 .list{
@@ -58,4 +60,3 @@ div.col.google {
   border-radius: 5px;
   margin-left: 10px;
 }
-

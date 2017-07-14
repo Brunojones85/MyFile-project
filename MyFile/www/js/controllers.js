@@ -83,7 +83,38 @@ angular.module('starter.controllers', [])
 
 .controller('UploadController', function($scope, $http) {
 
-  })
+  $scope.enviar = function(){
+    var formData = new FormData();
+    var arquivo = document.getElementById("arquivoInput").files[0];
+    formData.append("file", arquivo);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        var div = document.getElementById('mensagem');
+        var resposta = xhr.responseText;
+        div.innerHTML += resposta;
+      }
+    }
+    xhr.open("POST", "http://localhost:3000/upload");
+    xhr.send(formData);
+  }
+})
+
+//busca grupos
+.controller('GruposController', function($scope, $http) {
+  $scope.dados = {};
+
+  $scope.buscarGrupo = function(){
+    $http.get('http://localhost:3000/grupos/' + $scope.dados.buscaGrupo).then(function(reposta){
+      $scope.grupos = reposta.data;
+      console.log($scope.grupos);
+    });
+
+    $http.get('http://localhost:3000/grupo').then(function(reposta){
+      $scope.grupos = reposta.data;
+    });
+  }
+})
 
 .controller('ArquivosController', function($scope, $http, $ionicActionSheet) {
     $http.get('http://localhost:3000/arquivo').then(function(reposta){
@@ -91,7 +122,16 @@ angular.module('starter.controllers', [])
     // console.log(reposta.data);
      });
 
-          $scope.enviar = function(){
+     $scope.dados = {};
+
+     $scope.buscarArquivo = function(){
+       $http.get('http://localhost:3000/arquivos/' + $scope.dados.buscaArquivo).then(function(reposta){
+         $scope.arquivos = reposta.data;
+         console.log($scope.arquivos);
+       });
+     }
+
+      $scope.enviar = function(){
       var formData = new FormData();
       var arquivo = document.getElementById("arquivoInput").files[0];
       formData.append("file", arquivo);

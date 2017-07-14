@@ -2,10 +2,11 @@
     <div class="card">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" ng-model="dados.buscaGrupo">
       </label>
     </div>
-  <ion-content class="is-header"  id="topo">
+ <!-- </ion-content> -->
+  <ion-content class="has-search">
     <div class="list list-inset">
       <div class="list" ng-repeat="grupo in grupos" ng-model="facebook()">
         <a class="item item-thumbnail-left" href="#">
@@ -14,5 +15,9 @@
         </a>
       </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <button type="button" name="button" ng-click="buscarGrupo()">buscar</button>
   </ion-content>
 </ion-view>

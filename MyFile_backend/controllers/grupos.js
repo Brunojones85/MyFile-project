@@ -53,6 +53,16 @@ exports.recuperar = function (req, res) {
 };
 
 
+// recupera um grupo utilizando o id (busca de grupos)
+exports.recuperar = function (req, res) {
+  req.db.collection('grupos').find({"nome": req.params.nome}).toArray(function(err, result) {
+        if (err) {
+          return console.log(err)
+        };
+        res.send(result);
+  });
+};
+
 //conta grupos
 exports.contargrupo = function (req, res) {
   req.db.collection('grupos').count({}, function(err, result){

@@ -48,20 +48,13 @@ exports.apagar = function (req, res) {
 };
 
 
-// recupera um arquivo utilizando o id
+// recupera um arquivo utilizando o id (busca de arquivos)
 exports.recuperar = function (req, res) {
-  var id = req.params.id;
-
-  req.db.collection('arquivos').findOne({_id: ObjectID(id)}, function(err, result) {
-    if (err) {
-      return res.sendStatus(503);
-    }
-
-    if (!result) {
-      return res.send(404);
-    }
-
-      res.send(result);
+    req.db.collection('arquivos').find({"nome": req.params.nome}).toArray(function(err, result) {
+        if (err) {
+            return console.log(err)
+        };
+        res.send(result);
   });
 };
 

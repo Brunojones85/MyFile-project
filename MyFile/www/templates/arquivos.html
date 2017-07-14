@@ -2,9 +2,10 @@
     <div class="card">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" ng-model="dados.buscaArquivo">
       </label>
     </div>
+
   <ion-content class="is-file">
     <div class="list list-inset">
       <div class="card" ng-repeat="arquivo in arquivos" >
@@ -20,9 +21,11 @@
                   <button class="button-share-galeria ion-android-share-alt" ng-click="showActionsheet()"></button>
                 </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
+    <button type="button" name="button" ng-click="buscarArquivo()">buscar</button>
     <input type="file" id="arquivoInput" />
     <button ng-click="enviar()" class="add">Enviar </button>
   </ion-content>

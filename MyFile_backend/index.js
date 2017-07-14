@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 });
 
 // inicializa o servidor na porta especificada
-app.listen(3000, function() {
+app.listen(3000,'0.0.0.0', function() {
   console.log('Acesse o servidor http://localhost:3000');
 });
 // Endpoints
@@ -49,3 +49,12 @@ app.route('/galeria')
 
 app.route('/arquivoFile')
     .post(multiparty(), require('./controllers/upload.js'));
+
+// Endpoint busca arquivos (Bruno)
+app.get('/arquivos/:nome', arquivoController.recuperar);
+
+// Endpoint busca grupos (Bruno)
+app.get('/grupos/:nome', grupoController.recuperar);
+
+app.get('/contar', arquivoController.contar);
+app.get('/contargrupo', grupoController.contargrupo);
